@@ -1,0 +1,29 @@
+topic:
+  main: library-events
+  dlt: library-events.dlt
+  error: library-events.error
+app:
+  consumer:
+    exponentialBackOff:
+      initialInterval: 1000
+      multiplier: 3
+      maxAttempts: 2
+
+spring:
+  kafka:
+    template:
+      default-topic: library-events
+    producer:
+      bootstrap-servers: localhost:9092,localhost:9093
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    admin:
+      bootstrap-servers: localhost:9092,localhost:9093
+    consumer:
+      bootstrap-servers: localhost:9092,localhost:9093
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      autoOffsetReset: earliest
+
+server:
+  port: 8082

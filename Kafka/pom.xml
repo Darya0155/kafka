@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.0</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <groupId>com.arya</groupId>
+    <artifactId>Kafka</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <modules>
+        <module>Producer</module>
+        <module>WebApp</module>
+        <module>Data</module>
+        <module>Admin</module>
+        <module>Consumer</module>
+    </modules>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+
+    <build>
+        <plugins>
+        <plugin>
+            <groupId>org.openrewrite.maven</groupId>
+            <artifactId>rewrite-maven-plugin</artifactId>
+            <version>5.3.2</version>
+            <configuration>
+                <activeRecipes>
+                    <recipe>org.openrewrite.java.format.BlankLines</recipe>
+                    <recipe>org.openrewrite.java.format.EmptyNewlineAtEndOfFile</recipe>
+                    <recipe>org.openrewrite.java.format.AutoFormat</recipe>
+                    <recipe>org.openrewrite.java.format.MethodParamPad</recipe>
+                    <recipe>org.openrewrite.java.format.NoWhitespaceAfter</recipe>
+                    <recipe>org.openrewrite.java.format.NoWhitespaceBefore</recipe>
+                    <recipe>org.openrewrite.java.format.NormalizeFormat</recipe>
+                    <recipe>org.openrewrite.java.format.NormalizeLineBreaks</recipe>
+                    <recipe>org.openrewrite.java.format.NormalizeTabsOrSpaces</recipe>
+                    <recipe>org.openrewrite.java.format.OperatorWrap</recipe>
+                    <recipe>org.openrewrite.java.format.PadEmptyForLoopComponents</recipe>
+                    <recipe>org.openrewrite.java.format.RemoveTrailingWhitespace</recipe>
+                    <recipe>org.openrewrite.java.format.SingleLineComments</recipe>
+                    <recipe>org.openrewrite.java.format.Spaces</recipe>
+                    <recipe>org.openrewrite.java.format.TabsAndIndents</recipe>
+                    <recipe>org.openrewrite.java.format.TypecastParenPad</recipe>
+                    <recipe>org.openrewrite.java.format.WrappingAndBraces</recipe>
+                </activeRecipes>
+            </configuration>
+            <executions>
+                <execution>
+                    <phase>clean</phase>
+                    <goals>
+                        <goal>run</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+        </plugins>
+    </build>
+
+</project>
